@@ -1,18 +1,9 @@
 The files in this repository are the code that formed the statistical analyses for the manuscript titled: "Effect of Ocrelizumab on B and T-cell immune repertoires in patients with relapsing MS". The code herein is provided to serve as a reference, so that researchers can see exactly what was done. As such, if imported, much of these scripts will not run for the following reasons: they have many dependencies, in some instances were designed to run on a computational cluster (using SGE), and may even have absolute paths hardcoded in them.
 
-The code is divided into two classes: 
+The code is divided into three conceptual groups, organized into directories. See individual README's within these directories for descriptions of their contents. The three groups are: 
 
-"workflow_scripts" contains the scripts that execute a given analysis. They will do simple things like parsing filepaths, and walk a dataset through the different steps of an analysis. They will typically invoke a given python class, and execute the methods of that class. 
+"RepSeq_pipeline" contains the code that forms the bioinformatic pipeline that was used to process the raw immune repertoire sequence (RepSeq) data. The author of this pipeline is Hao Wu. Importantly, this pipeline relies on MIXCR to map and annotate sequence reads.
 
-"python_classes" contains the bulk of the code. It is as the name suggest, a directory that contains the python code for a variety of classes that were designed for different data types. For example, there is a class for immune time series data ("immune_time_series_class.py") which contains a variety of methods useful for immune repertoire sequence data that is of a longitudinal nature. 
+"workflow_scripts" contains the scripts that execute a given statistical analysis. They will do simple things like parsing filepaths, and walk a dataset through the different steps of an analysis. They will typically invoke a given python class, and execute the methods of that class. 
 
-
-Contents of workflow_scripts:
-
-diversity_linear_mixed_model.R - This is an R script that runs the linear mixed model for modeling the Shannon Index diversity data.
-
-get_clonal_freq_spectra.py - This script processes the clonal sequence data to get the frequency spectra across clonal clusters for each sample.
-
-get_gene_usage.py - This script processes the clonal sequence data to get the expression level (i.e. number of reads that map to a given gene, normalized by the total number of reads) for each gene segment (V or J) across each time-point.
-
-regression_based_geneByGene_test.R - This is an R script that runs the linear regression for each gene segment. 
+"python_classes" contains the bulk of the code for performing statistical analyses on the post-processed RepSeq data. It is as the name suggest, a directory that contains the code for a variety of python classes that were designed for different data types. For example, there is a class for immune time series data ("immune_time_series_class.py") which contains a variety of methods useful for immune repertoire sequence data that is of a longitudinal nature. The code within this directory functions as an accompaniment to "workflow_scripts".

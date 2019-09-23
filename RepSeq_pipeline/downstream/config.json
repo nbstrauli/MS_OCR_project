@@ -1,0 +1,10 @@
+{
+    "count_cutoff": 2,
+    "date": "",
+    "dbname": "bcr",
+    "distance_cutoff": 2,
+    "length_cutoff": 8,
+    "method": "hamming",
+    "patient": "",
+    "pipeline_version": "6714b37"
+}
